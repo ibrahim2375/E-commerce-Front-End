@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "img": "http://wp.alithemes.com/html/wowy/frontend/assets/imgs/slider/slider-3.png",
+    "title": "Manufacturer",
+    "tag": "Tech Trending",
+    "description": "Save more with coupons & up to 20% off",
+    "bg": "#f4f5f9"
+  },
+  {
+    "id": 1,
+    "img": "http://wp.alithemes.com/html/wowy/frontend/assets/imgs/slider/slider-1.png",
+    "title": "Big Deals From",
+    "tag": "Upcoming Offer",
+    "description": "Headphone, Gaming Laptop, PC and more...",
+    "bg": "#f7e7e6"
+  },
+  {
+    "id": 2,
+    "img": "http://wp.alithemes.com/html/wowy/frontend/assets/imgs/slider/slider-2.png",
+    "title": "On All Products",
+    "tag": "Trade-In Offer",
+    "description": "Save more with coupons & up to 70% off",
+    "bg": "#def3fe"
+  }
+]
