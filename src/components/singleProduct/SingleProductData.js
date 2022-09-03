@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 //timeago
-import TimeAgo from 'timeago-react';
+// import TimeAgo from 'timeago-react';
 //components
 import SingleProductColor from './SingleProductColor'
 import SingleProductSize from './SingleProductSize'
@@ -41,9 +41,10 @@ function SingleProductData({ product }) {
     return (
         <div className="main-data d-flex justify-content-center align-items-start flex-column gap-3" style={{ flex: '.5' }}>
             <h1 className='display-3 main-color'>{product?.name}</h1>
-            <p className='text-muted'>{<TimeAgo
+            {/* <p className='text-muted'>{}</p> */}
+            {/* <TimeAgo
                 datetime={`${product?.createdAt}`}
-            />}</p>
+            /> */}
             <p>{product?.description}</p>
             <h2 className='display-5 main-color'>{product?.price}$</h2>
             <div>

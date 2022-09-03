@@ -15,8 +15,8 @@ const initialValue = {
 function RegisterForm() {
     const [formErrors, setFormErrors] = useState(initialValue);
     const [formValues, setFormValues] = useState(initialValue);
-    const [success, setSuccess] = useState('');
-    const [ErrorsFromServer, setErrorsFromServer] = useState('');
+    // const [success, setSuccess] = useState('');
+    // const [ErrorsFromServer, setErrorsFromServer] = useState('');
     const [disable, setDisable] = useState(true);
 
     ///get values 
@@ -58,8 +58,8 @@ function RegisterForm() {
                 experience throughout this website,
                 to manage access to your account.
             </Form.Text>
-            <p className="text-danger">{ErrorsFromServer}</p>
-            <p className="text-success">{success}</p>
+            {/* <p className="text-danger">{ErrorsFromServer}</p> */}
+            {/* <p className="text-success">{success}</p> */}
             <Form.Group className="mb-3" controlId="formBasicUsernameR">
                 <Form.Control type="text" placeholder="username" name="name" className='rounded-5' value={formValues.name} onChange={handleData} />
                 <Form.Label className="text-danger">{formErrors.name}</Form.Label>
