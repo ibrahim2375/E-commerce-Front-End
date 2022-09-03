@@ -14,7 +14,7 @@ function Prodect({ product }) {
             <Link to={`/product/${product._id}`}  >
                 <div className="product-card-head">
                     <span style={{ backgroundColor: 'green' }} className="state">{product.state}</span>
-                    <img src={`assets/uploads/${product.img}`} alt="" />
+                    <img src={`${process.env.REACT_APP_API}img/${product?.img}`} alt="" />
                 </div>
             </Link>
             <div className="product-card-content">
