@@ -16,7 +16,10 @@
 html {
   scroll-behavior: smooth;
 }
-
+.center {
+  display:grid;
+  place-items: center;
+}
 .link {
   text-decoration: none;
   color: #333;
@@ -41,6 +44,9 @@ html {
 }
 .main-color {
   color: var(--main-color);
+}
+.btn-bg {
+    background-color: var(--light-color);
 }
 .btn-over {
   color: black;
