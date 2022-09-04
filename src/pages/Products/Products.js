@@ -9,6 +9,8 @@ import Container from 'react-bootstrap/Container';
 //api request
 import { public_request } from '../../util/requestMethods'
 import { useLocation } from 'react-router-dom'
+//product model skeleton
+import ProductModelSkeleton from '../../Skeleton/components/layouts/ProductModel_Skeleton';
 // redux 
 // import { useSelector } from 'react-redux'
 
@@ -19,6 +21,7 @@ function Products() {
     const [products, setProducts] = useState([]);
     const [filterdProducts, setFilterdProducts] = useState([])
     const [filterd, setFilterd] = useState({})
+    const [loading, setLoading] = useState(false);
     // const [query, setQuery] = useState('');
     const handelSelectChange = (e) => {
         const value = e.target.value;
@@ -30,9 +33,11 @@ function Products() {
     useEffect(() => {
         // get all products
         const getProducts = async () => {
+            setLoading(true)
             await public_request.get(!location.search ? `products/get` : `products/get?category=${location.search.replace('?', '')}`)
                 .then((res) => {
                     setProducts(res.data);
+                    setLoading(false);
                 })
                 .catch((err) => console.log(err))
         }
@@ -58,11 +63,13 @@ function Products() {
                 <FilterProducts handelSelectChange={handelSelectChange} />
                 {/* products */}
                 <div className="d-flex flex-wrap justify-content-center align-items-center gap-5 my-5">
-                    {filterdProducts.length !== 0 ? filterdProducts.map((product, i) => (
-                        <ProductModel key={i} product={product} />
-                    )) : products.map((product, i) => (
-                        <ProductModel key={i} product={product} />
-                    ))}
+                    {loading ? (Array.from({ length: 10 }).map((s, i) => <ProductModelSkeleton key={i}/>))
+                        : (filterdProducts.length !== 0 ? filterdProducts.map((product, i) => (
+                            <ProductModel key={i} product={product} />
+                        )) : products.map((product, i) => (
+                            <ProductModel key={i} product={product} />
+                        )))
+                    }
                 </div>
                 {/* products */}
             </Container>

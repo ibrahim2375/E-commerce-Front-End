@@ -15,6 +15,8 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 //api request 
 import { public_request } from '../../util/requestMethods';
+//skeleton 
+import TerndSkeleton from '../../Skeleton/components/Home/Trend_Skeleton'
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -40,12 +42,11 @@ function Trend() {
                             <div style={{ zIndex: '1' }} className='d-flex'>
                                 <Link to={`/products?${trend.category}`} className="btn-over mx-1 link"><SearchOutlinedIcon /></Link>
                                 <div className='btn-bg rounded center'> <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} /></div>
-                                {/* <Link to={`/product/${trend._id}`} className="btn-over mx-1 link"><FavoriteBorderOutlinedIcon /></Link> */}
                                 <Link to={`/product/${trend._id}`} className="btn-over mx-1 link"><ShoppingCartOutlinedIcon /></Link>
                             </div>
                         </Card>
                     </Col>
-                )) : ('')}
+                )) : Array.from({ length: 4 }).map((t, i) => <TerndSkeleton key={i} />)}
             </Row>
         </Container>
     )
