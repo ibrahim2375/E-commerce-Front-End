@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 //components
 import Navbar from '../layouts/Navbar'
-import Search from '../../components/Products/Search'
+// import Search from '../../components/Products/Search'
 import FilterProducts from '../../components/Products/FilterProducts'
 import ProductModel from '../layouts/ProdectModel'
 //bootstrap components

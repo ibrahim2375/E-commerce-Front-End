@@ -48,6 +48,9 @@ html {
 .btn-bg {
     background-color: var(--light-color);
 }
+.main-bg {
+    background-color: var(--main-color);
+}
 .btn-over {
   color: black;
   padding: 10px;

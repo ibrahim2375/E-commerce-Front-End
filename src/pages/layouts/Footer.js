@@ -4,7 +4,7 @@ import '../../css/Footer.css'
 function Footer() {
     return (
         <footer>
-            <div className="footer-head text-white">
+            <div className="footer-head text-white main-bg">
                 <div className="subscribe-section">
                     <h1>Sign up to Online Shopping</h1>
                     {/* <p>...and receive $25 coupon for first shopping.</p> */}
