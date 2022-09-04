@@ -12,6 +12,8 @@ import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStore
 //redux
 import * as Actions from '../../Redux/actions/Actions'
 import { useSelector, useDispatch } from 'react-redux';
+// categories JSON
+import categories from '../../json/categories.json'
 function NavBar() {
     const dispatch = useDispatch()
     const orders = useSelector(state => state.user_data.user_orders);
@@ -24,7 +26,7 @@ function NavBar() {
             {['md'].map((expand) => (
                 <Navbar key={expand} bg="light" expand={expand} className='position-sticky w-100 top-0' style={{ zIndex: 999 }}>
                     <Container>
-                        <Navbar.Brand href="#">OHS</Navbar.Brand>
+                        <Navbar.Brand href="/" className='center'><img src='logo.svg' alt='' width='30px' height='30px' /></Navbar.Brand>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas
                             id={`offcanvasNavbar-expand-${expand}`}
@@ -33,7 +35,7 @@ function NavBar() {
                         >
                             <Offcanvas.Header closeButton>
                                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                                    OSH
+                                    <img src='logo.svg' alt='logo' width='30px' height='30px' />
                                 </Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body>
@@ -44,10 +46,11 @@ function NavBar() {
                                         title="Categories"
                                         id={`offcanvasNavbarDropdown-expand-${expand}`}
                                     >
-                                        <NavDropdown.Item href="#action3">Laptops</NavDropdown.Item>
-                                        <NavDropdown.Item href="#action4">Watches</NavDropdown.Item>
-                                        <NavDropdown.Divider />
-                                        <NavDropdown.Item href="#action5">Phones</NavDropdown.Item>
+                                        {categories.map(category =>
+                                        (<div key={category.id}><Link to={`/products?${category.category}`} className='link ps-2'>{category.display}</Link>
+                                            <NavDropdown.Divider /></div >)
+                                        )}
+                                        <Link to="/products" className='link ps-2'>All</Link>
                                     </NavDropdown>
                                 </Nav>
                                 <Nav className="justify-content-end align-items-md-center flex-grow-1 pe-3 gap-3">

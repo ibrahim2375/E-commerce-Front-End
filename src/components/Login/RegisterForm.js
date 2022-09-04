@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
+//success message
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 //bootstrap components
 import Form from 'react-bootstrap/Form';
 import * as yup from 'yup';
+//api request
+import { public_request } from '../../util/requestMethods'
 //functions 
 import { registerFormSchema } from './HandleFunctions'
 const initialValue = {
@@ -15,8 +20,6 @@ const initialValue = {
 function RegisterForm() {
     const [formErrors, setFormErrors] = useState(initialValue);
     const [formValues, setFormValues] = useState(initialValue);
-    // const [success, setSuccess] = useState('');
-    // const [ErrorsFromServer, setErrorsFromServer] = useState('');
     const [disable, setDisable] = useState(true);
 
     ///get values 
@@ -35,20 +38,33 @@ function RegisterForm() {
     }
 
     //submit form
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // userApi.createUser(formValues.email,
-        //     formValues.password, formValues.name,
-        //     formValues.number, formValues.address).then((res) => {
-        //         if (!res?.message)
-        //             setErrorsFromServer(res);
-        //         else {
-        //             setSuccess('Successfully Added...');
-        //             setFormValues(initialValue);
-        //             setTimeout(_ => setSuccess(''), 1000);
-        //             setDisable(true);
-        //         }
-        //     }).catch((err) => console.log(err))
+        await public_request.post('users/auth/create', { ...formValues })
+            .then(response => {
+                toast.success(response?.data?.message, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                setFormValues(initialValue);
+                setDisable(true);
+            })
+            .catch(err => {
+                toast.error(err?.response?.data?.message, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            })
     }
     return (
         <Form>
@@ -58,8 +74,6 @@ function RegisterForm() {
                 experience throughout this website,
                 to manage access to your account.
             </Form.Text>
-            {/* <p className="text-danger">{ErrorsFromServer}</p> */}
-            {/* <p className="text-success">{success}</p> */}
             <Form.Group className="mb-3" controlId="formBasicUsernameR">
                 <Form.Control type="text" placeholder="username" name="name" className='rounded-5' value={formValues.name} onChange={handleData} />
                 <Form.Label className="text-danger">{formErrors.name}</Form.Label>
@@ -84,6 +98,19 @@ function RegisterForm() {
                 <Form.Check type="checkbox" label="I agree to terms and Policy." />
             </Form.Group>
             <button disabled={disable} className='main-btn' type="submit" onClick={handleSubmit}>Register</button>
+            {/* toast container */}
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl
+                pauseOnFocusLoss={false}
+                draggable
+                pauseOnHover
+            />
+            {/* toast container */}
         </Form>
     );
 }

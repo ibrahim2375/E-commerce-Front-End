@@ -8,35 +8,36 @@ import ProductModel from '../layouts/ProdectModel'
 import Container from 'react-bootstrap/Container';
 //api request
 import { public_request } from '../../util/requestMethods'
+import { useLocation } from 'react-router-dom'
 // redux 
 // import { useSelector } from 'react-redux'
 
 
 function Products() {
     // const products = useSelector(state => state.products_data.products);
+    const location = useLocation();
     const [products, setProducts] = useState([]);
     const [filterdProducts, setFilterdProducts] = useState([])
     const [filterd, setFilterd] = useState({})
-    const [query, setQuery] = useState('');
-
+    // const [query, setQuery] = useState('');
     const handelSelectChange = (e) => {
         const value = e.target.value;
         setFilterd({ ...filterd, [e.target.name]: value })
     }
-    const handleSearch = (value) => {
-        setQuery(value);
-    }
+    // const handleSearch = (value) => {
+    //     setQuery(value);
+    // }
     useEffect(() => {
         // get all products
         const getProducts = async () => {
-            await public_request.get(`products/get`)
+            await public_request.get(!location.search ? `products/get` : `products/get?category=${location.search.replace('?', '')}`)
                 .then((res) => {
                     setProducts(res.data);
                 })
                 .catch((err) => console.log(err))
         }
         getProducts()
-    }, [])
+    }, [location])
 
     useEffect(() => {
         // get all filtered
@@ -44,15 +45,15 @@ function Products() {
             product?.avilableSizes.includes(filterd?.size)
             || product?.avilableColors.includes(filterd?.color)
             || product?.type === filterd?.type
-            || (product?.name).toLowerCase() === (query).toLowerCase()
+            // || (product?.name).toLowerCase() === (query).toLowerCase()
             // || ((product?.name).toLowerCase()).search(query.toLowerCase()) !== -1
         ))
-    }, [products, filterd, query])
+    }, [products, filterd])
     return (
         <>
             <Navbar />
             <Container>
-                <Search handleSearch={handleSearch} />
+                {/* <Search handleSearch={handleSearch} /> */}
                 <h1 className="display-5">Filter Products</h1>
                 <FilterProducts handelSelectChange={handelSelectChange} />
                 {/* products */}

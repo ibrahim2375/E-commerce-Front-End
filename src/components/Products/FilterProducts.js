@@ -1,7 +1,8 @@
 import React from 'react'
 // bootstrap components
 import Form from 'react-bootstrap/Form';
-
+//json data 
+import filterTools from '../../json/Filter_tools.json'
 function FilterProducts({ handelSelectChange }) {
 
     return (
@@ -9,26 +10,17 @@ function FilterProducts({ handelSelectChange }) {
             <div className="d-flex justify-content-center align-items-center gap-4">
                 <Form.Select aria-label="Default select example" name="size" onChange={(e) => handelSelectChange(e)}>
                     <option disabled >Size</option>
-                    <option value="sm">SM</option>
-                    <option value="md">MD</option>
-                    <option value="lg">LG</option>
-                    <option value="xl">XL</option>
-                    <option value="xxl">XXL</option>
-
+                    {filterTools.sizes.map(size => <option value={size.size} key={size.id}>{size.display}</option>)}
                 </Form.Select>
                 <Form.Select aria-label="Default select example" name="color" onChange={(e) => handelSelectChange(e)}>
                     <option disabled >Colors</option>
-                    <option value="black">Black</option>
-                    <option value="white">White</option>
-                    <option value="yellow">Yellow</option>
+                    {filterTools.colors.map(color => <option value={color.color} key={color.id}>{color.color}</option>)}
                 </Form.Select>
             </div>
             <div className="filter-type">
                 <Form.Select aria-label="Default select example" name="type" onChange={(e) => handelSelectChange(e)}>
                     <option disabled >Type</option>
-                    <option value="new">Added New</option>
-                    <option value="feature">Feature</option>
-                    <option value="popular">Popular</option>
+                    {filterTools.types.map(type => <option value={type.type} key={type.id}>{type.display}</option>)}
                 </Form.Select>
             </div>
         </div>

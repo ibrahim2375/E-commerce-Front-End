@@ -9,16 +9,16 @@ function Card({ order, removeItemFromCart }) {
                 <CloseOutlinedIcon sx={{ fontSize: 30 }} onClick={() => removeItemFromCart(order?._id)} />
             </div>
             <div className='d-flex justify-content-center align-items-center'>
-                <img src={`${process.env.REACT_APP_API}img/${order?.img}`} style={{ width: '200px', height: '250px', objectFit: 'contain' }} alt="" />
+                <img src={`/assets/uploads/${order?.img}`} style={{ width: '200px', height: '250px', objectFit: 'contain' }} alt="" />
                 <div>
                     <p className='fs-6'><span className='main-color'>Product: </span>{order?.name}</p>
-                    <p><CircleIcon sx={{ color: order?.color }} /></p>
-                    <p className='fs-6'><span className='main-color'>Size: </span>{order?.size}</p>
+                    {order?.color ? (<p><CircleIcon sx={{ color: order?.color }} /></p>) : null}
+                    {order?.size ? (<p className='fs-6'><span className='main-color'>Size: </span>{order?.size}</p>) : null}
                 </div>
             </div>
             <div>
-                <h1>{order?.quantity}</h1>
-                <h1>${order?.price}</h1>
+                <h1 className='main-color'>{order?.quantity}</h1>
+                <h1 className='main-color'>${order?.price}</h1>
             </div>
         </div>
     )

@@ -8,7 +8,7 @@ function SingleProductColor({ colors, handelSelectChange }) {
 
       <h1 className='display-6'>Color:</h1>
       {
-        colors?.length !== 0 ? (
+        colors?.length !== 0  ? (
           <Form.Select aria-label="Default select example" name="color" onChange={(e) => handelSelectChange(e)}>
             <option disabled>Color</option>
             {colors?.map((color) => <option key={color} value={`${color}`}>{color.toUpperCase()}</option>)}

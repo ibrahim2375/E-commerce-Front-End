@@ -1,0 +1,88 @@
+{
+    "colors": [
+        {
+            "id": 0,
+            "color": "white"
+        },
+        {
+            "id": 1,
+            "color": "black"
+        },
+        {
+            "id": 2,
+            "color": "gray"
+        },
+        {
+            "id": 3,
+            "color": "lightblue"
+        },
+        {
+            "id": 4,
+            "color": "blue"
+        },
+        {
+            "id": 5,
+            "color": "green"
+        },
+        {
+            "id": 6,
+            "color": "gold"
+        },
+        {
+            "id": 7,
+            "color": "red"
+        },
+        {
+            "id": 8,
+            "color": "yellow"
+        },
+        {
+            "id": 9,
+            "color": "brown"
+        }
+    ],
+    "sizes": [
+        {
+            "id": 0,
+            "size": "sm",
+            "display": "S"
+        },
+        {
+            "id": 1,
+            "size": "md",
+            "display": "M"
+        },
+        {
+            "id": 2,
+            "size": "lg",
+            "display": "L"
+        },
+        {
+            "id": 3,
+            "size": "xl",
+            "display": "XL"
+        },
+        {
+            "id": 4,
+            "size": "xxl",
+            "display": "XXL"
+        }
+    ],
+    "types": [
+        {
+            "id": 0,
+            "type": "new",
+            "display": "Added New"
+        },
+        {
+            "id": 1,
+            "type": "feature",
+            "display": "Feature"
+        },
+        {
+            "id": 2,
+            "type": "popular",
+            "display": "Popular"
+        }
+    ]
+}
