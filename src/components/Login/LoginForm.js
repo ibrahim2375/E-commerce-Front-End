@@ -39,8 +39,7 @@ function LoginForm() {
                         } else {
                             setErrors(null);
                             dispatch(Actions.get_user(response?.data, true));
-                            // Navigate('/');
-                            console.log(response.data);
+
                         }
                     }).catch(err => { setErrors(err?.response?.data?.message) })
                 }
