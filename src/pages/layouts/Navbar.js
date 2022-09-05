@@ -16,6 +16,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import categories from '../../json/categories.json'
 //animation framer motion
 import { motion } from 'framer-motion'
+import Logo from './logo.svg'
 function NavBar() {
     const dispatch = useDispatch()
     const orders = useSelector(state => state.user_data.user_orders);
@@ -28,7 +29,7 @@ function NavBar() {
             {['md'].map((expand) => (
                 <Navbar key={expand} bg="light" expand={expand} className='position-sticky w-100 top-0' style={{ zIndex: 999 }}>
                     <Container>
-                        <Navbar.Brand href="/" className='center'><img src='logo.svg' alt='' width='30px' height='30px' /></Navbar.Brand>
+                        <Navbar.Brand href="/" className='center'><img src={Logo} alt='' width='30px' height='30px' /></Navbar.Brand>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas
                             id={`offcanvasNavbar-expand-${expand}`}
@@ -37,7 +38,7 @@ function NavBar() {
                         >
                             <Offcanvas.Header closeButton>
                                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                                    <img src='logo.svg' alt='logo' width='30px' height='30px' />
+                                    <img src={Logo} alt='logo' width='30px' height='30px' />
                                 </Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body>
@@ -53,7 +54,7 @@ function NavBar() {
                                             <Link to={`/products?${category.category}`} className='link  w-100'>
                                                 <motion.div className='w-100 h-100 ps-3'
                                                     whileHover={{ scale: 1.3, originX: 0, cursor: 'pointer' }}
-                                                    transition={{ type:'spring' , stiffness: 300}}
+                                                    transition={{ type: 'spring', stiffness: 300 }}
                                                 >
                                                     {category.display}
                                                 </motion.div>

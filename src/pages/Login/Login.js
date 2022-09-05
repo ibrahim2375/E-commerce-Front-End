@@ -3,6 +3,7 @@ import React from 'react'
 import Container from 'react-bootstrap/Container'
 //components
 import NavBar from '../layouts/Navbar'
+import Footer from '../layouts/Footer'
 import LoginForm from '../../components/Login/LoginForm'
 import RegisterForm from '../../components/Login/RegisterForm'
 //css 
@@ -19,6 +20,7 @@ function Login() {
                     <RegisterForm />
                 </div>
             </Container>
+            <Footer />
         </div>
     )
 }
