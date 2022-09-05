@@ -10,10 +10,11 @@
 - axios
 - bootstrap , react-bootstrap
 - react-stripe-checkout
-<hr/>
-## To Run The Project
+
+# To Run The Project
+- npm install
 - npm start
-- To Run Project npm start 
+
 
 ![img](public/EC-front-end.png)
 
