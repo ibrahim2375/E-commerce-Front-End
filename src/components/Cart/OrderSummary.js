@@ -24,18 +24,11 @@ function OrderSummary({ orders }) {
             if (response?.status === 200) {
                 dispatch(Actions.user_orders([]));
                 Navigate('/profile');
-            } else {
-                toast.error('somthing wrong', {
-                    position: "top-right",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
             }
-        }).catch(error => console.log(error))
+
+        }).catch(error => {
+           console.log(error);
+        })
 
     }
     const paymentMethod = async (token) => {
@@ -57,7 +50,15 @@ function OrderSummary({ orders }) {
                 });
             }
         }).catch((err) => {
-            console.log(err)
+            toast.error('somthing wrong', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         })
     }
     useEffect(() => {
@@ -114,7 +115,6 @@ function OrderSummary({ orders }) {
                 pauseOnHover
             />
             {/* toast container */}
-
         </div>
     )
 }

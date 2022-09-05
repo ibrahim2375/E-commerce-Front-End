@@ -34,7 +34,7 @@ function Trend() {
     }, [])
     return (
         <Container>
-            <h1 className='my-2 main-color display-6'>Trending</h1>
+            <h1 className='my-4 main-color display-6'>Trending :</h1>
             <Row xs={1} md={2} className="g-4">
                 {trendProducts.length !== 0 ? trendProducts.map(trend => (
                     <Col key={trend._id} >

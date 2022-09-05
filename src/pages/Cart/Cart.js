@@ -23,6 +23,7 @@ function Cart() {
                     : (<h1 className='text-center main-color my-5'>No Orders In Cart</h1>)}
                 {orders?.length !== 0 && <OrderSummary orders={orders} />}
             </Container>
+           
         </>
     )
 }
