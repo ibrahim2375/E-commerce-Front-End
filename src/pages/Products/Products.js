@@ -70,7 +70,6 @@ function Products() {
                             <ProductModel key={i} product={product} />
                         )))
                     }
-                    <ProductModelSkeleton  />
                 </div>
                 {/* products */}
             </Container>
