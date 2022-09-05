@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+//router   
+import { useNavigate } from 'react-router-dom'
 //success message
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,38 +9,56 @@ import StripeCheckout from 'react-stripe-checkout';
 //redux    
 import * as Actions from '../../Redux/actions/Actions'
 import { useDispatch } from 'react-redux'
+//api request
+import { public_request } from '../../util/requestMethods'
 let totalBasketPrice = 0;
 function OrderSummary({ orders }) {
+    const Navigate = useNavigate()
     const dispatch = useDispatch()
     const [totalPrice, setTotalPrice] = useState(0);
-    const paymentMethod = token => {
-        const body = {
-            token,
-            totalPrice,
+    //make order successfullt paied
+    const AddOreder = async () => {
+        await public_request.post('users/order', {
             orders
-        }
-        const headers = {
-            'Content-Type': 'application/json'
-        }
-        return fetch(process.env.REACT_APP_API + 'product/payment', {
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify(body)
         }).then(response => {
-            if (response.ok) {
-                toast.success('🦄 Payment Successfully!', {
+            if (response?.status === 200) {
+                dispatch(Actions.user_orders([]));
+                Navigate('/profile');
+            } else {
+                toast.error('somthing wrong', {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
                     draggable: true,
                     progress: undefined,
                 });
-                dispatch(Actions.user_orders([]));
             }
+        }).catch(error => console.log(error))
 
-        }).catch((err) => console.log(err))
+    }
+    const paymentMethod = async (token) => {
+        await public_request.post('product/payment', {
+            totalPrice,
+            tokenId: token.id,
+        }).then((response) => {
+            if (response?.status === 200) {
+                AddOreder()
+            } else {
+                toast.error('somthing wrong', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+        }).catch((err) => {
+            console.log(err)
+        })
     }
     useEffect(() => {
         let finish = false;
@@ -69,7 +89,16 @@ function OrderSummary({ orders }) {
                     <h3>${totalPrice}</h3>
                 </div>
             </div>
-            <StripeCheckout stripeKey={process.env.REACT_APP_P_K} token={paymentMethod} amount={totalPrice * 100} name="OSH">
+            <StripeCheckout
+                name="Online Shopping"
+                image='logo.svg'
+                billingAddress
+                shippingAddress
+                description={`Your total is $${totalPrice}`}
+                amount={totalPrice * 100}
+                token={paymentMethod}
+                stripeKey={process.env.REACT_APP_P_K}
+            >
                 <button className='main-btn'>Checkout Now ${totalPrice}</button>
             </StripeCheckout>
             {/* toast container */}
