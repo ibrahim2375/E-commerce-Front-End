@@ -1,4 +1,5 @@
 import React from 'react'
+import FooterData from './FooterData'
 //css 
 import '../../css/Footer.css'
 function Footer() {
@@ -15,7 +16,7 @@ function Footer() {
                 </div>
             </div>
             <div className="footer-content bg-light">
-                <GroupDataSection />
+                <FooterData />
             </div>
             <hr />
             <div className="footer text-center">
@@ -24,44 +25,5 @@ function Footer() {
         </footer >
     )
 }
-const GroupDataSection = () => {
-    return (
-        <div className="container d-flex  justify-content-start justify-content-lg-center align-items-start flex-wrap py-5" style={{ gap: '60px' }}>
-            <div className="listDataSection">
-                <h3>contact</h3>
-                <ul>
-                    <li>Street 32, San Francisco</li>
-                    <li>+01 2222 365 /(+91) 01 2345 6789</li>
-                    <li>10:00 - 18:00, Mon - Sat</li>
-                </ul>
-            </div>
-            <div className="listDataSection">
-                <h3>about</h3>
-                <ul>
-                    <li>About Us</li>
-                    <li>Delivery Information</li>
-                    <li>Privacy Policy</li>
-                    <li>Terms Conditions</li>
-                </ul>
-            </div>
-            <div className="listDataSection">
-                <h3>my Account</h3>
-                <ul>
-                    <li>Sign In</li>
-                    <li>Track My Order</li>
-                    <li>Help</li>
-                    <li>Order</li>
-                </ul>
-            </div>
-            <div className="listDataSection">
-                <h3>download Our App</h3>
-                <ul>
-                    <li>From App Store or Google Play</li>
-                    <li>google play</li>
-                    <li>app store</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
+
 export default Footer

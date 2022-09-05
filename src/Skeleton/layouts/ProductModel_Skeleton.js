@@ -3,7 +3,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 //mui  icons
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-
 // skeleton components
 import Skeleton from '@mui/material/Skeleton';
 function ProductModel_Skeleton() {

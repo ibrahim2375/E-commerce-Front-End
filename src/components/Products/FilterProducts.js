@@ -3,10 +3,16 @@ import React from 'react'
 import Form from 'react-bootstrap/Form';
 //json data 
 import filterTools from '../../json/Filter_tools.json'
+//animation framer motion
+import { motion } from 'framer-motion'
 function FilterProducts({ handelSelectChange }) {
 
     return (
-        <div className="d-flex justify-content-sm-between align-items-center gap-3">
+        <motion.div className="d-flex justify-content-sm-between align-items-center gap-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ type: 'spring', duration: 1.3 }}
+        >
             <div className="d-flex justify-content-center align-items-center gap-4">
                 <Form.Select aria-label="Default select example" name="size" onChange={(e) => handelSelectChange(e)}>
                     <option disabled >Size</option>
@@ -23,7 +29,7 @@ function FilterProducts({ handelSelectChange }) {
                     {filterTools.types.map(type => <option value={type.type} key={type.id}>{type.display}</option>)}
                 </Form.Select>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

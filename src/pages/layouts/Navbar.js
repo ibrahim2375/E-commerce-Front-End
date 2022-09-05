@@ -14,6 +14,8 @@ import * as Actions from '../../Redux/actions/Actions'
 import { useSelector, useDispatch } from 'react-redux';
 // categories JSON
 import categories from '../../json/categories.json'
+//animation framer motion
+import { motion } from 'framer-motion'
 function NavBar() {
     const dispatch = useDispatch()
     const orders = useSelector(state => state.user_data.user_orders);
@@ -47,14 +49,31 @@ function NavBar() {
                                         id={`offcanvasNavbarDropdown-expand-${expand}`}
                                     >
                                         {categories.map(category =>
-                                        (<div key={category.id}><Link to={`/products?${category.category}`} className='link ps-2'>{category.display}</Link>
-                                            <NavDropdown.Divider /></div >)
+                                        (<div key={category.id} className='w-100'>
+                                            <Link to={`/products?${category.category}`} className='link  w-100'>
+                                                <motion.div className='w-100 h-100 ps-3'
+                                                    whileHover={{ scale: 1.3, originX: 0, cursor: 'pointer' }}
+                                                    transition={{ type:'spring' , stiffness: 300}}
+                                                >
+                                                    {category.display}
+                                                </motion.div>
+                                            </Link>
+                                            <NavDropdown.Divider />
+                                        </div >)
                                         )}
-                                        <Link to="/products" className='link ps-2'>All</Link>
+                                        <Link to="/products" className='link ps-3 w-100 h-100'>All</Link>
                                     </NavDropdown>
                                 </Nav>
                                 <Nav className="justify-content-end align-items-md-center flex-grow-1 pe-3 gap-3">
-                                    {!user_state ? (<Link to="/login" className='link'>Login</Link>) : (<button className='btn-over' onClick={logOut}>Logout</button>)}
+                                    {!user_state ? (<Link to="/login" className='link'>Login</Link>) :
+                                        (<motion.button className='btn-normal'
+                                            onClick={logOut}
+                                            whileHover={{
+                                                scale: 1.1,
+                                                textShadow: '0 0  8px white',
+                                                boxShadow: '0 0  8px #5897fb',
+                                            }}
+                                        >Logout</motion.button>)}
                                     <Link to="/cart" className='link'>
                                         <Badge color="primary" badgeContent={orders?.length} showZero>
                                             <LocalGroceryStoreOutlinedIcon />

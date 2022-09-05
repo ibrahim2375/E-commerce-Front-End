@@ -37,7 +37,16 @@ html {
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
-
+.btn-normal {
+    color: #fff;
+    padding: 7px 10px;
+    background-color: var(--main-color);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
 .main-btn:hover {
   background-color: var(--light-color);
   color: black;

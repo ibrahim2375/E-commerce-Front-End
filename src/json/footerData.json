@@ -1,0 +1,75 @@
+{
+    "contact": [
+        {
+            "id": 0,
+            "title": "Street 32, San Francisco",
+            "link": ""
+        },
+        {
+            "id": 2,
+            "title": "+01 2222 365 /(+91) 01 2345 6789",
+            "link": ""
+        },
+        {
+            "id": 3,
+            "title": "10:00 - 18:00, Mon - Sat",
+            "link": ""
+        }
+    ],
+    "about": [
+        {
+            "id": 0,
+            "title": "About Us",
+            "link": ""
+        },
+        {
+            "id": 1,
+            "title": "Delivery Information",
+            "link": ""
+        },
+        {
+            "id": 2,
+            "title": "Privacy Policy",
+            "link": ""
+        },
+        {
+            "id": 3,
+            "title": "Terms Conditions",
+            "link": ""
+        }
+    ],
+    "my-account": [
+        {
+            "id": 0,
+            "title": "Sign In",
+            "link": "/login"
+        },
+        {
+            "id": 1,
+            "title": "Help",
+            "link": ""
+        },
+        {
+            "id": 2,
+            "title": "Order",
+            "link": ""
+        }
+    ],
+    "download-our-app": [
+        {
+            "id": 0,
+            "title": "From App Store or Google Play",
+            "link": ""
+        },
+        {
+            "id": 1,
+            "title": "google play",
+            "link": ""
+        },
+        {
+            "id": 2,
+            "title": "app store",
+            "link": ""
+        }
+    ]
+}
