@@ -1,20 +1,17 @@
-import React, { useState } from 'react'
 //router link 
 import { Link } from 'react-router-dom'
 //mui  icons
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import Rating from '@mui/material/Rating';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 //css  
 import '../../css/ProductModel.css'
 function Prodect({ product }) {
-    const [stars] = useState([1, 2, 3, 4, 5])
-
     return (
         <section className="product-card" >
             <Link to={`/product/${product._id}`}  >
                 <div className="product-card-head">
                     <span style={{ backgroundColor: 'green' }} className="state">{product.state}</span>
-                    <img src={`/assets/uploads/${product?.img}`} alt="" />
+                    <img src={`/assets/uploads/${product?.img}`} alt="" /> 
                 </div>
             </Link>
             <div className="product-card-content">
@@ -24,7 +21,7 @@ function Prodect({ product }) {
                 </div>
                 <hr />
                 <div className="evaluation">
-                    {stars.map((star, index) => <StarBorderOutlinedIcon sx={{ color: 'orange' }} key={index} />)}
+                    <Rating name="read-only" value={product.TotalReviewStars} readOnly />
                     <p>{product.views} views</p>
                 </div>
                 <div className="price">

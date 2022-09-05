@@ -5,8 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 //mui icons  
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
-import Favorite from '@mui/icons-material/Favorite';  
-
+import Favorite from '@mui/icons-material/Favorite';
 //components
 import SingleProductColor from './SingleProductColor'
 import SingleProductSize from './SingleProductSize'
@@ -17,8 +16,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import TimeAgo from 'react-timeago'
 import enStrings from 'react-timeago/lib/language-strings/en'
 import buildFormatter from 'react-timeago/lib/formatters/buildFormatter'
+import RatingComponent from './RatingComponent';
 const formatter = buildFormatter(enStrings)
-
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const intialValue = { size: null, color: null, quantity: '1' };
 function SingleProductData({ product }) {
@@ -50,7 +49,11 @@ function SingleProductData({ product }) {
     return (
         <div className="main-data d-flex justify-content-center align-items-start flex-column gap-3" style={{ flex: '.5' }}>
             <h1 className='display-3 main-color'>{product?.name}</h1>
-            <p className='text-muted'><TimeAgo date={`${product?.createdAt}`} formatter={formatter}/></p>
+            <div className='d-flex justify-content-between w-100'>
+                <p className='text-muted'><TimeAgo date={`${product?.createdAt}`} formatter={formatter} /></p>
+                <RatingComponent/>
+            </div>
+          
             <p>{product?.description}</p>
             <h2 className='display-5 main-color'>{product?.price}$</h2>
             <div>
@@ -60,7 +63,7 @@ function SingleProductData({ product }) {
             <div className="d-flex justify-content-around align-items-center w-100">
                 <input type="number" min={1} max={10} name="quantity" defaultValue={1}
                     className='bg-light rounded border w-25 py-2' onChange={(e) => handelSelectChange(e)} />
-            <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+                <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
                 <button className="btn-over mx-1" onClick={() => AddToCart(product?._id)}>Add To Cart</button>
             </div>
             {/* toast container */}
@@ -79,5 +82,6 @@ function SingleProductData({ product }) {
         </div>
     )
 }
+
 
 export default SingleProductData

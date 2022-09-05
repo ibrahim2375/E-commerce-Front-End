@@ -10,7 +10,7 @@ import Container from 'react-bootstrap/Container';
 import { public_request } from '../../util/requestMethods'
 import { useLocation } from 'react-router-dom'
 //product model skeleton
-import ProductModelSkeleton from '../../Skeleton/components/layouts/ProductModel_Skeleton';
+import ProductModelSkeleton from '../../Skeleton/layouts/ProductModel_Skeleton';
 // redux 
 // import { useSelector } from 'react-redux'
 
@@ -70,6 +70,7 @@ function Products() {
                             <ProductModel key={i} product={product} />
                         )))
                     }
+                    <ProductModelSkeleton  />
                 </div>
                 {/* products */}
             </Container>

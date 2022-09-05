@@ -4,7 +4,7 @@ import ProductModel from '../../../pages/layouts/ProdectModel'
 //util api 
 import { public_request } from '../../../util/requestMethods'
 //product model skeleton
-import ProductModelSkeleton from '../../../Skeleton/components/layouts/ProductModel_Skeleton';
+import ProductModelSkeleton from '../../../Skeleton/layouts/ProductModel_Skeleton';
 
 function Featured() {
     const [featureProducts, setFeatureProducts] = useState([])

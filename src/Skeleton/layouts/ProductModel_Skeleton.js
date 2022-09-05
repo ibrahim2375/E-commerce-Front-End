@@ -5,27 +5,28 @@ import { Link } from 'react-router-dom'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 // skeleton components
-import SpinnerLoading from '../../SpinnerLoading'
-import LineAnimation from '../../LineAnimation'
-
+import Skeleton from '@mui/material/Skeleton';
 function ProductModel_Skeleton() {
     return (
         <section className="product-card" >
-            <div className="product-card-head center">
-                <SpinnerLoading />
-            </div>
+  
+                <div className="product-card-head center w-100">
+                    <Skeleton width={80} height={40} animation="wave" className="state" />
+                    <Skeleton variant="rectangular" width="100%" height="100%" animation="wave" />
+                </div>
+
             <div className="product-card-content">
-                <div className="product-content-head">
-                    <LineAnimation width={2} />
-                    <LineAnimation width={3} />
+                <div className="content-head">
+                    <Skeleton width="20%" animation="wave" />
+                    <Skeleton width="50%" animation="wave" />
                 </div>
                 <hr />
                 <div className="evaluation">
-                    <LineAnimation width={5} />
-                    <LineAnimation width={2} />
+                    <Skeleton width="60%" animation="wave" />
+                    <Skeleton width="30%" animation="wave" />
                 </div>
                 <div className="price">
-                    <LineAnimation width={2} />
+                    <Skeleton  width="20%" animation="wave" />
                     <Link to='/' className="btn-over" >
                         <ShoppingCartOutlinedIcon />
                     </Link>
