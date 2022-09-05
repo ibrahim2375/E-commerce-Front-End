@@ -1,8 +1,21 @@
 ##Getting Started with Create React App
-
-## to run the project
+# App Techniques 
+- React
+- react-router-dom
+- redux , react-redux
+- redux-persist
+- react-toastify
+- react-timeago
+- yup
+- axios
+- bootstrap , react-bootstrap
+- react-stripe-checkout
+<hr/>
+## To Run The Project
 - npm start
 - To Run Project npm start 
+
+![img](public/EC-front-end.png)
 
 #Be care the application has secret keys u should have some of this keys
 - application already fetch data from api u can put it in .env environment file 
