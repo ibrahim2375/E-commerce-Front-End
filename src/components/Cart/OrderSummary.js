@@ -20,28 +20,25 @@ function OrderSummary({ orders }) {
     const dispatch = useDispatch()
     const [totalPrice, setTotalPrice] = useState(0);
     //make order successfullt paied
-    const AddOreder = async () => {
-    await public_request.post('users/order', {
-        orders,
-        userId: user?._id
-    }).then(response => {
-        if (response?.status === 200) {
-            setTimeout(() => {
-                dispatch(Actions.user_orders([]));
-                Navigate('/profile');
-            }, 1000)
-        }
-    }).catch(error => {
-        console.log(error);
-    })
-    }
     const paymentMethod = async (token) => {
         await public_request.post('product/payment', {
             totalPrice,
             tokenId: token.id,
-        }).then( (response) => {
+        }).then(async (response) => {
             if (response?.status === 200) {
-                AddOreder()
+                await public_request.post('users/order', {
+                    orders,
+                    userId: user?._id
+                }).then(response => {
+                    if (response?.status === 200) {
+                        setTimeout(() => {
+                            dispatch(Actions.user_orders([]));
+                            Navigate('/profile');
+                        }, 2000)
+                    }
+                }).catch(error => {
+                    console.log(error);
+                })
             } else {
                 toast.error('somthing wrong', {
                     position: "top-right",
