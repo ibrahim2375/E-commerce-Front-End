@@ -11,31 +11,35 @@ import * as Actions from '../../Redux/actions/Actions'
 import { useDispatch } from 'react-redux'
 //api request
 import { public_request } from '../../util/requestMethods'
+//redux 
+import { useSelector } from 'react-redux'
 let totalBasketPrice = 0;
 function OrderSummary({ orders }) {
+    const user = useSelector(state => state?.user_data?.user);
     const Navigate = useNavigate()
     const dispatch = useDispatch()
     const [totalPrice, setTotalPrice] = useState(0);
     //make order successfullt paied
     const AddOreder = async () => {
-        await public_request.post('users/order', {
-            orders
-        }).then(response => {
-            if (response?.status === 200) {
+    await public_request.post('users/order', {
+        orders,
+        userId: user?._id
+    }).then(response => {
+        if (response?.status === 200) {
+            setTimeout(() => {
                 dispatch(Actions.user_orders([]));
                 Navigate('/profile');
-            }
-
-        }).catch(error => {
-           console.log(error);
-        })
-
+            }, 1000)
+        }
+    }).catch(error => {
+        console.log(error);
+    })
     }
     const paymentMethod = async (token) => {
         await public_request.post('product/payment', {
             totalPrice,
             tokenId: token.id,
-        }).then((response) => {
+        }).then( (response) => {
             if (response?.status === 200) {
                 AddOreder()
             } else {
