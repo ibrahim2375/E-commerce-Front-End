@@ -13,12 +13,15 @@ function Profile() {
     const [orders, setOrders] = useState([]);
     const getUserOrders = async () => {
         await public_request.get('users/get-order')
-            .then(response => setOrders(response.data))
-            .catch(err => console.error(err))
+            .then((response) => {
+                if (response?.status === 200) {
+                    setOrders(response?.data)
+                }
+            }).catch((err) => console.log(err))
     }
     useEffect(() => {
-        getUserOrders()
-    }, [user])
+        getUserOrders();
+    }, [])
     return (
         <div>
             <Navbar />
