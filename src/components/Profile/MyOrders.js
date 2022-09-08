@@ -17,7 +17,7 @@ function MyOrders({ orders }) {
                     <div className='d-flex justify-content-between align-items-center shadow rounded px-2 w-100' key={i}>
                         <div className='d-flex justify-content-center align-items-center gap-2'>
                             <Link to={`/product/${order?.productId}`}>
-                            <img src={`/assets/uploads/${order?.img}`} style={{ width: '100px', height: '100px', objectFit: 'contain' }} alt="" />
+                                <img src={`${process.env.REACT_APP_BD_SITE}/assets/uploads/${order?.img}`} style={{ width: '100px', height: '100px', objectFit: 'contain' }} alt="" />
                             </Link>
                             <div>
                                 <p>{order?.name}</p>

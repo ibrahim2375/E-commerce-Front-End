@@ -39,7 +39,7 @@ function Trend() {
                 {trendProducts.length !== 0 ? trendProducts.map(trend => (
                     <Col key={trend._id} >
                         <Card className="most-popular-card position-relative  d-flex justify-content-center  align-items-center" style={{ height: '400px' }}>
-                            <Card.Img src={`/assets/uploads/${trend.img}`} className='h-100 w-100 position-absolute top-0 left-0' style={{ objectFit: 'contain' }} />
+                            <Card.Img src={`${process.env.REACT_APP_BD_SITE}/assets/uploads/${trend?.img}`} className='h-100 w-100 position-absolute top-0 left-0' style={{ objectFit: 'contain' }} />
                             <div style={{ zIndex: '1' }} className='d-flex'>
                                 <Link to={`/products?${trend.category}`} className="btn-over mx-1 link"><SearchOutlinedIcon /></Link>
                                 <div className='btn-bg rounded center'> <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} /></div>
