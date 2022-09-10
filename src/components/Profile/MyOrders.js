@@ -29,9 +29,13 @@ function MyOrders({ orders }) {
                         <div className='d-flex justify-content-center align-items-start flex-column'>
                             <p className='main-color'>{order?.quantity}</p>
                             <p className='main-color'>${order?.price}</p>
-                            <p className='main-color'>
-                                {order?.accept === true ? <span className='text-success'>Accepted 😃 </span> : <span className='text-warning'>Waiting...</span>}
-                            </p>
+                            <div className="div">
+                                <p className='main-color flex-column'>
+                                    {order?.accept === true ? <span className='text-success'>Accepted 😃 </span> : <span className='text-warning'>Waiting...</span>}
+                                </p> <p className='main-color flex-column'>
+                                    {order?.arrived === true ? <span className='text-dark'>Delivered 🉑 </span> : <span className='text-warning'>Delivery in progress.</span>}
+                                </p>
+                            </div>
                         </div>
                     </div>
 
