@@ -12,7 +12,7 @@ function Card({ order, removeItemFromCart }) {
             </div>
             <div className='d-flex justify-content-center align-items-center'>
                 <Link to={`/product/${order?._id}`}>
-                    <img src={`/assets/uploads/${order?.img}`} style={{ width: '200px', height: '250px', objectFit: 'contain' }} alt="" />
+                    <img src={`${process.env.REACT_APP_BD_SITE}/assets/uploads/${order?.img}`} style={{ width: '200px', height: '250px', objectFit: 'contain' }} alt="" />
                 </Link>
                 <div>
                     <p className='fs-6'><span className='main-color'>Product: </span>{order?.name}</p>

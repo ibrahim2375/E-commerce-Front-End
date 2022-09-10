@@ -30,7 +30,7 @@ function MyOrders({ orders }) {
                             <p className='main-color'>{order?.quantity}</p>
                             <p className='main-color'>${order?.price}</p>
                             <p className='main-color'>
-                                {order?.accept === true ? <span className='text-success'>Accepted</span> : <span className='text-warning'>Waiting</span>}
+                                {order?.accept === true ? <span className='text-success'>Accepted 😃 </span> : <span className='text-warning'>Waiting...</span>}
                             </p>
                         </div>
                     </div>

@@ -62,7 +62,7 @@ function RegisterForm() {
                                 progress: undefined,
                             });
                             setFormValues(initialValue);
-                            setDisable(true);
+                            // setDisable(true);
                         })
                         .catch(err => {
                             toast.error(err?.response?.data?.message, {
