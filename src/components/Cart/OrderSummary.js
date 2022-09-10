@@ -14,13 +14,14 @@ import { public_request } from '../../util/requestMethods'
 //redux 
 import { useSelector } from 'react-redux'
 let totalBasketPrice = 0;
-function OrderSummary({ orders }) {
+function OrderSummary({ orders, setLoading }) {
     const user = useSelector(state => state?.user_data?.user);
     const Navigate = useNavigate()
     const dispatch = useDispatch()
     const [totalPrice, setTotalPrice] = useState(0);
     //make order successfullt paied
     const paymentMethod = async (token) => {
+        setLoading(true);
         await public_request.post('product/payment', {
             totalPrice,
             tokenId: token.id,
@@ -29,12 +30,13 @@ function OrderSummary({ orders }) {
                 await public_request.post('users/order', {
                     orders,
                     userId: user?._id
-                }).then(response => {
+                }).then(async (response) => {
                     if (response?.status === 200) {
+                        setLoading(false);
+                        dispatch(Actions.user_orders([]));
                         setTimeout(() => {
-                            dispatch(Actions.user_orders([]));
                             Navigate('/profile');
-                        }, 2000)
+                        }, 1500)
                     }
                 }).catch(error => {
                     console.log(error);
